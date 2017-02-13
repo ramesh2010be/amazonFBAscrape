@@ -30,8 +30,6 @@ function ThalluAccessAPI($url)
 	$html    = str_get_html($html);
 
 if (!empty($html)) {
-   
-    ############## END OF IP BLOC script ################
     
     if ($html->find("div[id=resultsCol] ul li")) {
         foreach ($html->find("div[id=resultsCol] ul li") as $elem) {
@@ -39,7 +37,7 @@ if (!empty($html)) {
 				$tot_scrap++;
 				$parent_asin  = $elem->{"data-asin"};
 				$country_url = 'https://www.amazon.co.uk/dp/'.$parent_asin;
-				$amz_url  = 'http://thallu.com/api/amazon.php?auth_code=YourAuthcode&url=' . urlencode($country_url);
+				$amz_url  = 'http://thallu.com/api/amazon.php?auth_code=YourAuthcode&amazonURL=' . urlencode($country_url);
 				
 				$html2        = ThalluAccessAPI($amz_url);
 				$html2        = str_get_html($html2);
